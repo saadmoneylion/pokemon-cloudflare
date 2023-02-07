@@ -8,7 +8,7 @@ export default {
         incorrect_login_details: 'Incorrect username or password. Please try again.',
         cta_forgot_password: 'Forgot password?',
         cta_sign_in: 'Sign in',
-        cta_sign_up_now: 'Sign up',
+        cta_sign_up_now: 'Sign up now',
         cta_login: 'Login',
     },
 };
