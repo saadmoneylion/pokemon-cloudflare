@@ -1,12 +1,16 @@
 import { Link } from "@remix-run/react";
+import { onRequestGet } from "functions/sample";
 import translation from "../translations/en";
+
+export async function loader() {
+    return onRequestGet();
+};
 
 export default function SignupPage() {
 
     const onChange = () => {
 
     }
-
 
     return (
         <div className="flex flex-row w-screen h-screen items-center justify-center">
