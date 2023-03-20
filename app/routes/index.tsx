@@ -1,4 +1,4 @@
-import { json } from "@remix-run/server-runtime";
+import { json, LoaderArgs } from "@remix-run/server-runtime";
 import { Link, useLoaderData, } from "@remix-run/react";
 import { getPokemons } from "~/models/pokemon.server";
 import translation from "../translations/en";
@@ -7,7 +7,8 @@ type LoaderData = {
   data: Awaited<ReturnType<typeof getPokemons>>;
 };
 
-export async function loader() {
+export async function loader({ context }: LoaderArgs) {
+  console.log(`contextdata: ${JSON.stringify(context.CLIENT_SECRET)}`);
   return json<LoaderData>({
     data: await getPokemons(),
   });
