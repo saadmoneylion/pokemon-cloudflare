@@ -5,24 +5,26 @@ import translation from "../translations/en";
 
 type LoaderData = {
   data: Awaited<ReturnType<typeof getPokemons>>;
+  clientSecret: string;
 };
 
 
 export async function loader({ context }: LoaderArgs) {
-  console.log(`contextdata: ${JSON.stringify(context)}`);
-  console.log(`contextdata: ${JSON.stringify(context.CLIENT_SECRET)}`);
+  // console.log(`contextdata: ${JSON.stringify(context)}`);
+  // console.log(`contextdata: ${JSON.stringify(context.CLIENT_SECRET)}`);
 
   return json<LoaderData>({
     data: await getPokemons(),
+    clientSecret: context.CLIENT_SECRET as string,
   });
 };
 
 export default function Index() {
-  const { data } = useLoaderData() as LoaderData;
+  const { data, clientSecret } = useLoaderData() as LoaderData;
   return (
     <main className="mx-auto max-w-4xl">
       <h1 className="my-6 border-b-2 text-center text-3xl">
-        Which Pokémon do you want to catch?
+        Which Pokémon do you want to catch? {clientSecret}
       </h1>
       <div className="flex w-2/4 h-10 rounded-full justify-center text-xl m-auto bg-teal-500 cursor-pointer">
         <Link

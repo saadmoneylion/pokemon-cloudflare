@@ -5,6 +5,8 @@ const handleRequest = createPagesFunctionHandler({
   build,
   mode: process.env.NODE_ENV,
   getLoadContext: (context) => {
+    console.log(`${context.CLIENT_SECRET}`);
+    console.log(`${JSON.stringify(context)}`);
     return {
       context,
     }
